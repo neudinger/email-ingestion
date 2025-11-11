@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  ingestor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: email-security-ingestor
+    volumes:
+      - ./data:/data
+    environment:
+      - DUCKDB_PATH=/data/security_test.db
+    command: >
+      sh -c "
+        echo 'Starting ingestion service...' &&
+        /usr/local/bin/ingestion-service &&
+        echo 'Ingestion finished. Sleeping for inspection...' &&
+        sleep 3600
+      "
