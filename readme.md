@@ -1,6 +1,11 @@
 # Email Ingestion
 
-# Description
+
+DataBase used
+
+- https://duckdb.org/
+
+## Description
 
 ```mermaid
 graph TD
@@ -142,4 +147,7 @@ docker-compose up --build
 ## Perspective
 
 - Use apache flight for data syncronisation and data api for data scientist and data enginer
+- Save in long term storage in to parquet or delta
 - Use apache flight SQL for sql read/write access to postgres
+- Python can access the data in optimised batch with apache flight arrow to process it with pandas
+- Use of grpc + protobuf for inter service communication
